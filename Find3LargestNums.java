@@ -4,22 +4,32 @@ import java.util.Arrays;
 
 public class Find3LargestNums {
 	public static void main(String[] args) {
-		int a[] = { 1,5,20,10,30 };
-		int temp=a[0];
-		for(int i=0;i<a.length;i++) {
-			for(int j=i+1;j<a.length;j++) {
-				if(a[i]>a[j]) {
-					temp=a[i];
-					a[i]=a[j];
-					a[j]=temp;
-					
-				}
-			}
-		
-		}for(int i=a.length-1;i>=a.length-3;i--) {
-			System.out.println(a[i]);
-		}
-		System.out.println(Arrays.toString(a));
+		int nums[] = { 1,5,20,10,30 };
+		 Integer maxNum=null;
+	        Integer secondMaxNum=null;
+	        Integer thirdMaxNum=null;
+	        
 
+	        for(Integer num:nums){
+	            if(num.equals(maxNum)||num.equals(secondMaxNum)|| num.equals(thirdMaxNum)) {
+	            continue;
+	        }
+	            if(maxNum==null|| num>maxNum){
+	                thirdMaxNum=secondMaxNum;
+	                secondMaxNum=maxNum;
+	                maxNum=num;
+	            }
+	            else if(secondMaxNum==0 || num>secondMaxNum){
+	                 thirdMaxNum=secondMaxNum;
+	                  secondMaxNum=num;
+	            }
+	            else if(thirdMaxNum==0 || num>thirdMaxNum){
+	                thirdMaxNum=num;
+	            }
+	        }
+	        if(thirdMaxNum==0){
+	            System.out.println(maxNum);
+	        }
+	        System.out.println(thirdMaxNum);
 	}
 }
